@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Créer un fichier au nom aléatoire
-        run: echo "Contenu du fichier" > $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1).txt
+        run: echo "Contenu du fichier" > $(uuidgen).txt
 
       - name: Configurer l'identité Git
         run: |
