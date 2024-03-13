@@ -1,0 +1,27 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Déclencheur quotidien à minuit
+
+jobs:
+  auto_commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v2
+
+      - name: Créer un fichier au nom aléatoire
+        run: echo "Contenu du fichier" > $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1).txt
+
+      - name: Configurer l'identité Git
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
+      - name: Faire un commit
+        run: |
+          git add .
+          git commit -m "Auto commit $(date +%F)"
+          git push
