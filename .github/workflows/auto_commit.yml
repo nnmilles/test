@@ -1,6 +1,9 @@
 name: Auto Commit
+ 
+# Allows you to run this workflow manually from the Actions tab
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *' # Déclencheur quotidien à minuit
 
