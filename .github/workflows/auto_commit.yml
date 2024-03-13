@@ -1,5 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
+name: Auto Commit
 
 on:
   schedule:
@@ -11,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout du code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Créer un fichier au nom aléatoire
         run: echo "Contenu du fichier" > $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1).txt
